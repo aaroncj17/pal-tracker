@@ -9,5 +9,27 @@ repositories{
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web'
+    compile group: 'org.springframework', name: 'spring-web', version: '5.2.2.RELEASE'
+    compile group: 'org.springframework', name: 'spring-webmvc', version: '5.2.2.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: '2.2.2.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-json', version: '2.2.2.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-tomcat', version: '2.2.2.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '2.2.2.RELEASE'
+    //implementation 'org.springframework.boot:spring-boot-starter-web'
+    
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
 }
+
+test {
+    useJUnitPlatform()
+}
+
+bootRun.environment([
+        "WELCOME_MESSAGE": "hello",
+])
+
+test.environment([
+        "WELCOME_MESSAGE": "Hello from test",
+])
